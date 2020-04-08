@@ -42,7 +42,7 @@ router.post("/auth", (req, res, next) => {
         });
         res.json({
           success: true,
-          token: "JWT " + token,
+          token: "bearer " + token,
           user: {
             id: user._id,
             name: user.name,
@@ -59,10 +59,6 @@ router.post("/auth", (req, res, next) => {
 
 router.get("/profile", passport.authenticate("jwt", { session: false }), (req, res, next) => {
   res.json({ user: req.user });
-});
-
-router.get("/validate", (req, res, next) => {
-  res.send("validate");
 });
 
 module.exports = router;

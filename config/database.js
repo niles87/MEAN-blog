@@ -1,4 +1,6 @@
+require("dotenv").config();
+
 module.exports = {
-  database: "mongodb://localhost:27017/meanauth",
-  secret: "yoursecret",
+  database: process.env.DBASE,
+  secret: process.env.SECRET,
 };

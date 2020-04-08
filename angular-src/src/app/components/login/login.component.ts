@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
             cssClass: 'alert-success',
             timeout: 5000,
           });
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/dashboard']);
         } else {
           this.flashMessage.show(user.msg, {
             cssClass: 'alert-danger',
             timeout: 5000,
           });
-          this.router.navigate(['login']);
+          this.router.navigate(['/login']);
         }
       },
       (err) => console.log('Error', err)

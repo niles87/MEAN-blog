@@ -10,25 +10,29 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  registerUser(user) {
+  registerUser(user: any) {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user);
+    return this.http.post('http://localhost:3000/users/register', user, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  authenticateUser(user) {
+  authenticateUser(user: any) {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/auth', user);
+    return this.http.post('http://localhost:3000/users/auth', user, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   getProfile() {
     let headers = new Headers();
     this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/profile', {
-      headers: headers,
+    console.log(typeof this.authToken);
+    return this.http.get('http://localhost:3000/users/profile', {
+      headers: {
+        Authorization: this.authToken,
+        'Content-type': 'application/json',
+      },
     });
   }
 
