@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
       });
       return false;
     }
+
     // Register User
     this.authService.registerUser(user).subscribe(
       (data: any) => {
